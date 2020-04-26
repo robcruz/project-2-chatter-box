@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"/>
+    <title>CHATTERBOX</title>
+  </head>
+  <body>
+    <nav>
+      <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Search For Current Topics</a></li>
+        <li><a href="#">Take me to the CHATTERBOX</a></li>
+        <li><a href="#">My Account</a></li>
+      </ul>
+    </nav>
+
+    <section class="landing">
+      <img src="Screen Shot 2020-04-08 at 7.57.52 PM.png" alt="dots" />
+    </section>
+    <section class="articleDisplay">
+      <div>
+        <h1>Article will be displayed here</h1>
+      </div>
+    </section>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        var socket = io();
+        $("form").submit(function () {
+          socket.emit("chat message", $("#m").val());
+          $("#m").val("");
+          return false;
+        });
+        socket.on("chat message", function (msg) {
+          $("#messages").append($("<li>").text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
+    </script>
+
+    <script src="login.js"></script>
+    <script src="app.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+
+<div class="container">
+    <div class="row">
+        <div class="twelve.columns">
+            <div class="nav"><a class="u-pull-right" href="/logout">logout</a></div>
+            <div class="welcome"><h2>welcome<span class="member-name"></span></h2></div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="card">
+            <h4 class="card-header">Let's give them something to talk about</h4>
+            <div class="card-body">
+                <div class="text-center">
+                    {{#each articles}}
+                        {{> articles/article-block}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card-body">
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
+<script type="text/javascript" src="js/news.js"></script>
